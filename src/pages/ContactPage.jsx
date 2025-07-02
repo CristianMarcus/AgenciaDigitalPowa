@@ -15,7 +15,55 @@ const ContactPage = () => {
     }
   });
 
-  const FORMSPREE_URL = 'https://formspree.io/f/mzzgoaon';
+  // *** INICIO DE LA MEJORA: Manejo de la variable de entorno FORMSPREE_URL ***
+  const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL;
+
+  // Verifica si la URL de Formspree está definida
+  if (!FORMSPREE_URL) {
+    console.error("Error: La variable de entorno VITE_FORMSPREE_URL no está definida. Por favor, asegúrate de que tu archivo .env esté configurado correctamente en la raíz de tu proyecto y que contenga 'VITE_FORMSPREE_URL=tu_url_de_formspree'.");
+    // Opcional: Podrías renderizar un mensaje de error o un componente de fallback aquí
+    return (
+      <Container className="my-5 text-center">
+        <Helmet>
+          <title>Contacto | Agencia Digital Powa</title>
+          <meta name="description" content="Contáctanos para solicitar un presupuesto o para cualquier consulta sobre tus proyectos digitales." />
+        </Helmet>
+        <h1 className="text-center contact-title-gradient mb-5">Contáctanos</h1>
+        <p className="contact-lead-text mb-5">
+          Lo sentimos, el formulario de contacto no está disponible en este momento.
+          Por favor, inténtalo de nuevo más tarde o contáctanos directamente a:
+          <br /><a href="mailto:cristianmarcus34@gmail.com">cristianmarcus34@gmail.com</a>
+        </p>
+        {/* Puedes mantener la columna de información de contacto si quieres */}
+        <Row className="justify-content-center">
+          <Col xs={12} lg={5}>
+            <div className="contact-info-card shadow-lg p-4 p-md-5 text-center">
+              <h2 className="mb-4 contact-info-title">Información de Contacto</h2>
+              <div className="info-item mb-4">
+                <FaEnvelope className="info-icon" />
+                <p className="mb-0">
+                  <a href="mailto:cristianmarcus34@gmail.com" className="info-link">cristianmarcus34@gmail.com</a>
+                </p>
+              </div>
+              <div className="info-item mb-4">
+                <FaPhoneAlt className="info-icon" />
+                <p className="mb-0">
+                  <a href="tel:+5491126884940" className="info-link">+54 9 11 2688-4940</a>
+                </p>
+              </div>
+              <div className="info-item">
+                <FaMapMarkerAlt className="info-icon" />
+                <p className="mb-0">
+                  Villa La Florida, Buenos Aires, Argentina
+                </p>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+  // *** FIN DE LA MEJORA ***
 
   const selectedServices = useWatch({
     control,
@@ -285,7 +333,7 @@ const ContactPage = () => {
             <div className="info-item mb-4">
               <FaPhoneAlt className="info-icon" />
               <p className="mb-0">
-                <a href="tel:+5491126884940" className="info-link">+54 9 11 2688-4940</a>
+                <a href="tel:+5491126884940" className="info-link">+54 9 11 2688-4940(WhatsApp)</a>
               </p>
             </div>
             <div className="info-item">
