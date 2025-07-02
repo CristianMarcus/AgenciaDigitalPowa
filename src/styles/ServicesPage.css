@@ -1,0 +1,328 @@
+/* src/styles/ServicesPage.css */
+
+/* --- Importar Google Fonts (Asegúrate de que estas fuentes estén en tu HTML o en tu CSS global) --- */
+/*
+Si no las tienes en otro lado, puedes añadirlas así al inicio de este archivo o a tu `global.css`:
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+*/
+
+
+/* --- Variables de Color (Si ya las tienes en global.css, puedes borrarlas de aquí) --- */
+/*
+:root {
+    --primary-color: #6a11cb;
+    --accent-color: #2575fc;
+    --secondary-color: #00c6ff;
+    --tertiary-color: #ffffff;
+    --heading-color: #2c3e50;
+    --text-dark: #34495e;
+    --text-light: #ecf0f1;
+    --bg-light: #f8f9fa;
+    --bg-light-card: #ffffff;
+    --secondary-color-light: #e0f2f7;
+    --primary-color-light: #e0f2f7;
+    --text-dark-secondary: #555;
+}
+*/
+
+/* --- Keyframes para animaciones (Si ya las tienes en global.css, no las dupliques) --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Contenedor Principal de la Página de Servicios --- */
+.services-page-container {
+    padding-top: 4rem; /* Más espacio arriba */
+    padding-bottom: 4rem; /* Más espacio abajo */
+    background-color: var(--bg-light); /* Fondo consistente */
+    color: var(--text-dark); /* Color de texto base */
+    font-family: 'Roboto', sans-serif; /* Fuente general para la página */
+}
+
+
+/* --- Título Principal de la Página de Servicios --- */
+.services-title-gradient {
+    font-family: 'Montserrat', sans-serif; /* Fuente para títulos */
+    font-size: 4.5rem; /* Tamaño de fuente más grande */
+    font-weight: 900; /* Extra bold */
+    margin-bottom: 2rem; /* Más espacio abajo */
+    text-align: center;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color)); /* Gradiente con accent-color */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para que el texto resalte */
+    opacity: 0; /* Oculto inicialmente */
+    animation: fadeInDown 1.2s ease-out forwards; /* Animación de entrada */
+}
+
+/* Texto introductorio bajo el título */
+.services-lead-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem; /* Tamaño de fuente un poco más grande */
+    color: var(--text-dark);
+    max-width: 850px; /* Limita el ancho para mejor legibilidad */
+    margin: 0 auto 4rem auto; /* Centra y añade más espacio inferior */
+    line-height: 1.8; /* Espaciado de línea para legibilidad */
+    text-align: center;
+    opacity: 0; /* Oculto inicialmente */
+    animation: fadeInUp 1.2s ease-out 0.4s forwards; /* Animación de entrada con retraso */
+}
+
+/* --- Estilo de la tarjeta de servicio individual --- */
+.service-card {
+    border: none;
+    border-radius: 20px; /* Bordes más redondeados */
+    overflow: hidden;
+    /* Transiciones mejoradas para un look más suave */
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, height 0.5s ease-in-out;
+    height: auto;
+    min-height: 350px; /* Ajustamos min-height para un aspecto más consistente */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--bg-light-card);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada por defecto */
+    position: relative;
+    padding: 2.2rem; /* Espaciado interno general de la tarjeta */
+
+    /* Animación de entrada para cada tarjeta */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards; /* La animación se aplicará con el delay de JS */
+}
+
+.service-card.expanded {
+    min-height: auto; /* Permite que la altura se ajuste completamente al expandir */
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, height 0.6s ease-in-out; /* Transición más larga para la expansión */
+}
+
+.service-card:hover {
+    transform: translateY(-12px); /* Levanta la tarjeta un poco más al pasar el mouse */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+}
+
+/* Contenedor del icono dentro de la tarjeta */
+.service-card .service-icon {
+    font-size: 4rem; /* Iconos aún más grandes */
+    color: var(--accent-color); /* Color accent para los iconos */
+    background-color: var(--primary-color-light); /* Fondo suave */
+    border-radius: 50%;
+    width: 100px; /* Tamaño del círculo más grande */
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.8rem auto; /* Centra el icono y añade más espacio inferior */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra ligera para el círculo */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta, que también afecta al ícono */
+.service-card:hover .service-icon {
+    background-color: var(--primary-color); /* Cambia el fondo del círculo del icono */
+    color: var(--text-light); /* Cambia el color del icono */
+    transform: scale(1.1); /* Ligeramente más grande al hover */
+}
+
+/* Estilo del título de la tarjeta */
+.service-card .card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem; /* Título de tarjeta más grande */
+    font-weight: 800; /* Más audaz */
+    color: var(--heading-color);
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    text-align: center;
+}
+
+/* Estilo del texto de la descripción de la tarjeta (snippet) */
+.service-card .card-description-content { /* Renombramos para claridad */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.05rem; /* Tamaño ligeramente más grande */
+    color: var(--text-dark-secondary);
+    line-height: 1.7;
+    text-align: center;
+    flex-grow: 1;
+    margin-bottom: 0.8rem; /* Pequeño margen para separar de "Ver Más" */
+}
+
+/* Estilo para el contenido de la descripción completa (solo visible si expandido) */
+.service-card .card-full-description-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.05rem;
+    color: var(--text-dark); /* Color un poco más oscuro para el texto expandido */
+    line-height: 1.8; /* Mejor legibilidad */
+    text-align: justify; /* Justificado para bloques de texto largos */
+    margin-top: 1rem; /* Espacio superior */
+    padding-top: 0.5rem; /* Padding interno */
+    border-top: 1px dashed var(--secondary-color-light); /* Borde punteado para separar */
+    opacity: 0; /* Oculto inicialmente */
+    transition: opacity 0.4s ease-in-out; /* Transición para la opacidad */
+}
+
+.service-card .card-full-description-content.show {
+    opacity: 1; /* Muestra el contenido cuando tiene la clase 'show' */
+}
+
+
+/* --- Estilo para el botón "Ver Más" --- */
+.read-more-btn {
+    font-family: 'Montserrat', sans-serif; /* Usamos la fuente de título para el botón */
+    color: var(--primary-color);
+    font-weight: 700; /* Más audaz */
+    text-decoration: none;
+    margin-top: auto; /* Empuja el botón hacia abajo en la tarjeta flexible */
+    padding: 0.5rem 1rem; /* Más padding para un área de clic más grande */
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.2s ease; /* Añadimos transform a la transición */
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid transparent; /* Borde transparente por defecto */
+}
+
+.read-more-btn:hover {
+    color: var(--secondary-color);
+    text-decoration: none; /* Quitamos el subrayado al hover para un efecto más limpio */
+    transform: translateY(-3px); /* Pequeño levantamiento al hover */
+    background-color: var(--primary-color-light); /* Fondo suave al hover */
+    border-color: var(--secondary-color); /* Borde de color al hover */
+}
+
+
+/* --- Media Queries para Responsividad --- */
+
+@media (max-width: 1200px) { /* Laptops y tablets grandes */
+    .services-title-gradient {
+        font-size: 3.8rem;
+    }
+    .service-card {
+        min-height: 330px;
+        padding: 2rem;
+    }
+    .service-card .service-icon {
+        font-size: 3.5rem;
+        width: 90px;
+        height: 90px;
+    }
+    .service-card .card-title {
+        font-size: 1.6rem;
+    }
+    .service-card .card-description-content,
+    .service-card .card-full-description-content {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 991px) { /* Tablets */
+    .services-title-gradient {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    .services-lead-text {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+    .service-card {
+        min-height: 300px;
+        padding: 1.8rem;
+    }
+    .service-card .service-icon {
+        font-size: 3rem;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.2rem;
+    }
+    .service-card .card-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) { /* Móviles grandes */
+    .services-title-gradient {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .services-lead-text {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    .service-card {
+        min-height: auto; /* Permite que la altura se ajuste más libremente en móviles */
+        padding: 1.5rem;
+        margin-bottom: 1.5rem; /* Espacio entre tarjetas apiladas */
+    }
+    .service-card .service-icon {
+        font-size: 2.8rem;
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+    .service-card .card-title {
+        font-size: 1.3rem;
+    }
+    .service-card .card-description-content,
+    .service-card .card-full-description-content {
+        font-size: 0.95rem;
+        text-align: center; /* Centrar texto en móviles */
+    }
+    .read-more-btn {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 575px) { /* Móviles pequeños */
+    .services-title-gradient {
+        font-size: 2rem;
+    }
+    .services-lead-text {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+    .service-card {
+        padding: 1.2rem;
+        border-radius: 15px;
+    }
+    .service-card .service-icon {
+        font-size: 2.5rem;
+        width: 60px;
+        height: 60px;
+    }
+    .service-card .card-title {
+        font-size: 1.2rem;
+    }
+    .service-card .card-description-content,
+    .service-card .card-full-description-content {
+        font-size: 0.88rem;
+    }
+}

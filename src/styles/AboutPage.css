@@ -1,0 +1,282 @@
+/* src/styles/AboutPage.css */
+
+/* --- Importar Google Fonts (Asegúrate de que estas fuentes estén en tu HTML o en tu CSS global) --- */
+/*
+Si no las tienes en otro lado, puedes añadirlas así al inicio de este archivo o a tu `global.css`:
+
+*/
+
+
+
+
+
+/* --- Globales y Animaciones Keyframes (Si ya las tienes en global.css, no las dupliques) --- */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px); /* Aumentamos el desplazamiento para un efecto más notorio */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Aumentamos el desplazamiento */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Contenedor Principal de la Página --- */
+.about-page-container {
+    padding-top: 4rem; /* Más padding arriba */
+    padding-bottom: 4rem; /* Más padding abajo */
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-family: 'Roboto', sans-serif; /* Fuente base para el cuerpo de texto */
+}
+
+/* --- Card Principal que Envuelve el Contenido --- */
+.about-main-card {
+    background-color: var(--bg-light-card);
+    border-radius: 2.5rem; /* Bordes más redondeados */
+    border: none; /* Quitamos el borde para un look más limpio */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra más prominente y suave */
+    padding: 3rem; /* Más padding interno */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    opacity: 0; /* Hidden initially for animation */
+    animation: fadeIn 1s ease-out 0.8s forwards; /* Aumentamos el delay para que aparezca después del título */
+}
+
+.about-main-card:hover {
+    transform: translateY(-5px); /* Efecto de "levantar" ligeramente */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Sombra más intensa al hover */
+}
+
+/* --- Título Principal con Gradiente --- */
+.about-header-title {
+    font-family: 'Montserrat', sans-serif; /* Nueva fuente para títulos */
+    font-weight: 900; /* Extra bold */
+    font-size: 4.5rem; /* Tamaño de fuente más grande */
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color)); /* Cambiamos a accent-color para el gradiente */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+    text-align: center;
+    margin-bottom: 3rem; /* Más espacio abajo */
+    padding-bottom: 20px; /* Más padding abajo del título */
+    border-bottom: 5px solid var(--secondary-color); /* Borde más grueso y color diferente */
+    display: inline-block;
+    line-height: 1.1; /* Ajuste de línea */
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    opacity: 0; /* Hidden initially for animation */
+    animation: fadeInDown 1.2s ease-out forwards; /* Animación más suave y con más desplazamiento */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra de texto sutil */
+}
+
+/* --- Párrafo Introductorio (Historia de la agencia) --- */
+.about-intro-paragraph {
+    font-family: 'Roboto', sans-serif; /* Fuente para el cuerpo de texto */
+    font-size: 1.2rem; /* Tamaño de fuente ligeramente más grande */
+    line-height: 1.9; /* Mayor espaciado de línea para legibilidad */
+    color: var(--text-dark);
+    margin-bottom: 4rem; /* Más espacio abajo */
+    text-align: justify; /* Justificamos para un look más formal */
+    opacity: 0; /* Hidden initially for animation */
+    animation: fadeInUp 1.2s ease-out 0.6s forwards; /* Animación más suave y con más desplazamiento, retraso ajustado */
+    padding: 0 1rem; /* Pequeño padding lateral para texto justificado */
+}
+
+/* --- Contenedor de la Foto y el Segundo Párrafo (para cada perfil) --- */
+/* Eliminamos profile-section-wrapper ya que Bootstrap Row y Col manejan la estructura */
+
+/* --- Contenedor de la Imagen de Perfil (for border, rounding, and shadow) --- */
+.profile-image-container {
+    flex-shrink: 0;
+    width: 250px; /* Tamaño ligeramente más grande para las fotos */
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid var(--primary-color); /* Borde más grueso y color primario */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Sombra más definida */
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem; /* Espacio debajo de la imagen en móviles */
+    opacity: 0; /* Hidden initially for animation */
+    animation: fadeIn 1s ease-out 1s forwards; /* Animación con delay para cada imagen */
+}
+
+.profile-image-container:nth-of-type(2) { /* Animación para la segunda imagen (Mariana) */
+    animation-delay: 1.3s;
+}
+
+.profile-image-container:hover {
+    transform: scale(1.03); /* Ligeramente más pequeño el scale al hover */
+    border-color: var(--secondary-color); /* Cambio de color al secondary */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35); /* Sombra más acentuada */
+}
+
+/* --- The Actual Image inside the container --- */
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Style for profile section title (e.g., "Cristian" or "Mariana") --- */
+.about-profile-section-title {
+    font-family: 'Montserrat', sans-serif; /* Nueva fuente para títulos de perfil */
+    font-size: 2.8rem; /* Tamaño de fuente más grande */
+    font-weight: 800; /* Más audaz */
+    color: var(--heading-color); /* Usamos el color de heading */
+    margin-bottom: 1.2rem; /* Ajuste de margen */
+    line-height: 1.2;
+    text-align: center;
+    opacity: 0; /* Hidden initially for animation */
+    animation: fadeInDown 1.2s ease-out 1.2s forwards; /* Animación con delay */
+}
+/* Delay para el título de Mariana */
+.about-profile-section-title + .about-profile-paragraph + .profile-image-container + .about-profile-section-title {
+    animation-delay: 1.5s;
+}
+
+
+@media (min-width: 768px) {
+    .about-profile-section-title {
+        text-align: left;
+    }
+    .profile-image-container {
+        margin-bottom: 0; /* Eliminar margen inferior en desktop */
+    }
+}
+
+/* --- Style for profile paragraph (your professional description) --- */
+.about-profile-paragraph {
+    font-family: 'Roboto', sans-serif; /* Fuente para el cuerpo de texto */
+    font-size: 1.1rem; /* Tamaño de fuente ligeramente más grande */
+    line-height: 1.8; /* Espaciado de línea */
+    color: var(--text-dark);
+    text-align: justify; /* Justificamos también estos párrafos */
+    opacity: 0; /* Hidden initially for animation */
+    animation: fadeInUp 1.2s ease-out 1.4s forwards; /* Animación con delay */
+    padding: 0 0.5rem; /* Pequeño padding lateral */
+}
+/* Delay para el párrafo de Mariana */
+.about-profile-section-title + .about-profile-paragraph + .profile-image-container + .about-profile-section-title + .about-profile-paragraph {
+    animation-delay: 1.7s;
+}
+
+@media (min-width: 768px) {
+    .about-profile-paragraph {
+        text-align: left;
+    }
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 991px) { /* Medium devices (md) */
+    .about-header-title {
+        font-size: 3.5rem;
+        padding-bottom: 15px;
+        border-bottom: 4px solid var(--secondary-color);
+    }
+    .about-main-card {
+        padding: 2rem;
+    }
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
+    }
+    .about-profile-section-title {
+        font-size: 2.2rem;
+    }
+    .about-intro-paragraph, .about-profile-paragraph {
+        font-size: 1rem;
+        text-align: center; /* Centrar texto en pantallas más pequeñas */
+        padding: 0; /* Eliminar padding lateral */
+    }
+}
+
+@media (max-width: 767px) { /* Small devices (sm) */
+    .about-header-title {
+        font-size: 2.8rem;
+        padding-bottom: 12px;
+        border-bottom: 3px solid var(--secondary-color);
+    }
+    .about-main-card {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+    .about-intro-paragraph {
+        font-size: 1rem;
+    }
+    .profile-image-container {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 1.5rem; /* Restaurar margen inferior */
+    }
+    .about-profile-section-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    .about-profile-paragraph {
+        font-size: 0.95rem;
+    }
+    /* En móviles, las imágenes y textos se centran por defecto */
+    .about-profile-section-title,
+    .about-profile-paragraph {
+        text-align: center;
+    }
+    /* Ajuste para que la imagen de Mariana aparezca antes del texto en móvil */
+    .about-main-card .row:nth-of-type(2) .order-md-1 { /* Selecciona el texto de Mariana */
+        order: 2;
+    }
+    .about-main-card .row:nth-of-type(2) .order-md-2 { /* Selecciona la imagen de Mariana */
+        order: 1;
+    }
+}
+
+@media (max-width: 575px) { /* Extra small devices */
+    .about-header-title {
+        font-size: 2.2rem;
+        border-bottom: none; /* Quitar borde en móviles muy pequeños */
+        padding-bottom: 0;
+    }
+    .about-main-card {
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+    .profile-image-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+    .about-profile-section-title {
+        font-size: 1.8rem;
+    }
+    .about-profile-paragraph {
+        font-size: 0.9rem;
+    }
+}

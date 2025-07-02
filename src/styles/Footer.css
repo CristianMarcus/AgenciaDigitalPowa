@@ -1,0 +1,21 @@
+/* src/styles/Footer.css */
+
+.main-footer {
+  background-color: var(--bg-dark); /* Asegura que el color de fondo venga de la variable */
+  color: var(--text-light); /* Color de texto blanco para el pie de página */
+}
+
+.footer-social-link {
+  color: var(--text-light); /* Color blanco por defecto para los iconos */
+  transition: color 0.3s ease-in-out; /* Transición suave para el cambio de color */
+  text-decoration: none; /* Asegura que no haya subrayado por defecto */
+}
+
+.footer-social-link:hover {
+  color: var(--accent-color); /* Color turquesa (accent-color) al pasar el mouse */
+}
+
+.footer-love-text {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.7); /* Color más tenue para este texto */
+}

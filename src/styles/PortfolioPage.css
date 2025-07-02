@@ -1,0 +1,164 @@
+/* src/styles/PortfolioPage.css */
+
+/* Estilo para el título principal con gradiente */
+.portfolio-title-gradient {
+  font-weight: 800; /* Extra bold */
+  font-size: 3.5rem; /* Tamaño de fuente grande */
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback para navegadores antiguos */
+  margin-bottom: 2rem;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--accent-color); /* Línea decorativa */
+  display: inline-block; /* Para que el borde se ajuste al texto */
+}
+
+/* Estilo para el subtítulo (lead paragraph) */
+.portfolio-lead-text {
+  font-size: 1.25rem;
+  color: var(--text-dark); /* O un color más suave como #555 */
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilo para los títulos de sección (h2) */
+.portfolio-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.portfolio-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px; /* Barra vertical decorativa */
+  height: 80%;
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+/* Estilo para las tarjetas de proyecto */
+.portfolio-card {
+  border: 1px solid var(--secondary-color); /* Borde sutil */
+  border-radius: 1rem; /* Bordes más redondeados */
+  overflow: hidden; /* Asegura que la imagen redondeada no se salga */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
+  background-color: var(--bg-light); /* Fondo claro para las tarjetas */
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px); /* Efecto de "levantar" al pasar el ratón */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* Contenedor de la imagen dentro de la tarjeta */
+.portfolio-card-img-container {
+  height: 220px; /* Altura fija para el contenedor de la imagen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-dark); /* Fondo oscuro para el área de la imagen */
+  border-bottom: 1px solid var(--secondary-color); /* Separador visual */
+}
+
+.portfolio-card-img {
+  width: 100%; /* La imagen ocupa el ancho completo del contenedor */
+  height: 100%; /* La imagen ocupa la altura completa del contenedor */
+  object-fit: contain; /* Asegura que la imagen completa sea visible */
+  padding: 10px; /* Pequeño padding interno para la imagen dentro del contenedor oscuro */
+}
+
+/* Estilo para el cuerpo de la tarjeta */
+.portfolio-card .card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Empuja el título/texto hacia arriba y la lista hacia abajo */
+}
+
+.portfolio-card .card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-card .card-text {
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+}
+
+/* Estilo para los elementos de la lista (URLs) */
+.portfolio-card .list-group-item {
+  border: none; /* Quita los bordes por defecto de ListGroup.Item */
+  background-color: transparent; /* Fondo transparente */
+  padding-left: 0; /* Quita padding izquierdo por defecto */
+  padding-right: 0; /* Quita padding derecho por defecto */
+}
+
+.portfolio-card .list-group-item a {
+  font-weight: 500;
+  color: var(--primary-color); /* Color del enlace */
+  transition: color 0.2s ease-in-out;
+}
+
+.portfolio-card .list-group-item a:hover {
+  color: var(--accent-color); /* Color de acento al pasar el ratón */
+  text-decoration: underline;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 991px) { /* Medium devices (md) */
+  .portfolio-title-gradient {
+    font-size: 3rem;
+  }
+  .portfolio-section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 767px) { /* Small devices (sm) */
+  .portfolio-title-gradient {
+    font-size: 2.5rem;
+    text-align: center; /* Centra el título en móviles */
+    display: block; /* Para que el borde ocupe todo el ancho */
+    border-bottom: none; /* Quita el borde inferior en móviles si no se ve bien */
+    padding-bottom: 0;
+  }
+  .portfolio-lead-text {
+    font-size: 1.1rem;
+  }
+  .portfolio-section-title {
+    font-size: 1.8rem;
+    text-align: center;
+    padding-left: 0;
+  }
+  .portfolio-section-title::before {
+    display: none; /* Oculta la barra decorativa en móviles */
+  }
+}
+
+@media (max-width: 575px) { /* Extra small devices */
+  .portfolio-title-gradient {
+    font-size: 2rem;
+  }
+  .portfolio-section-title {
+    font-size: 1.5rem;
+  }
+  .portfolio-card .card-title {
+    font-size: 1.5rem;
+  }
+}

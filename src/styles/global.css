@@ -1,0 +1,66 @@
+/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+:root {
+  /* Paleta de colores para tu marca "Powa" */
+  --primary-color: #6a0dad; /* Púrpura vibrante, relacionado con "Powa" (poder) */
+  --secondary-color: #8c2a9a; /* Un púrpura ligeramente más claro */
+  --terciary-color: rgb(221, 211, 211);
+  --accent-color: #ffc107; /* Amarillo para acentos, contraste y energía */
+  --text-dark: #333; /* Texto oscuro */
+  --text-light: #f8f9fa; /* Texto claro (para fondos oscuros) */
+  --bg-light: #ffffff; /* Fondo claro */
+  --bg-dark: #212529; /* Fondo oscuro (para secciones oscuras) */
+  --gradient-start: #6a0dad;
+  --gradient-end: #8c2a9a;
+
+   /* ¡NUEVAS VARIABLES QUE FALTABAN PARA LAS TARJETAS! */
+  --bg-light-card: #ffffff; /* Fondo blanco para las tarjetas */
+  --primary-color-light: rgba(106, 13, 173, 0.1); /* Un púrpura muy suave para el fondo del icono */
+  --heading-color: var(--primary-color); /* Usamos el color principal para los títulos de tarjeta */
+  --text-dark-secondary: #555; /* Un gris un poco más claro para la descripción */
+}
+
+
+
+body {
+  font-family: 'roboto', sans-serif; /* Puedes cambiar por 'Roboto', 'Montserrat', etc. después */
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--terciary-color);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none; /* Quita el subrayado por defecto */
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline; /* Añade subrayado al pasar el ratón */
+}
+
+/* Estilos básicos para botones */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* Un contenedor principal para centrar el contenido */
+.main-content {
+  padding-top: 60px; /* Espacio para el Navbar fijo */
+  min-height: calc(100vh - 100px); /* Ajusta según la altura de tu footer */
+}

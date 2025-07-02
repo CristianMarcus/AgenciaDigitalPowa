@@ -1,0 +1,85 @@
+/* src/components/LoadingScreen/LoadingScreen.css */
+
+.loading-screen-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-color); /* Usamos tu color primario */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: var(--text-light); /* Texto claro para fondo oscuro */
+  flex-direction: column;
+  animation: fadeInBackground 0.5s ease-out;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.loading-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  animation: rotateAndScale 2s ease-in-out infinite alternate;
+  /* Ajuste de color para el "padding" visual */
+  background-color: var(--secondary-color); /* O un color más oscuro si lo prefieres */
+  border-radius: 5px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.loading-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--accent-color); /* Usamos el color de acento para el texto principal */
+  margin-bottom: 1rem;
+  animation: pulseText 2s ease-in-out infinite;
+}
+
+.loading-message {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+}
+
+/* Animaciones CSS */
+@keyframes fadeInBackground {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rotateAndScale {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes pulseText {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Media queries para ajustar el tamaño en móviles */
+@media (max-width: 768px) {
+  .loading-text {
+    font-size: 1.8rem;
+  }
+  .loading-message {
+    font-size: 1rem;
+  }
+  .loading-logo {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,633 @@
+/* src/styles/HomePage.css */
+
+/* --- Importar Google Fonts (Asegúrate de que estas fuentes estén en tu HTML o en tu CSS global) --- */
+/*
+Si no las tienes en otro lado, puedes añadirlas así al inicio de este archivo o a tu `global.css`:
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+*/
+
+
+/* Keyframes para efectos de entrada */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframes para el hero image zoom */
+@keyframes zoomInEffect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Base para todos los elementos animados */
+.animate-on-scroll {
+    opacity: 0; /* Oculto inicialmente */
+    will-change: transform, opacity; /* Sugiere al navegador que estas propiedades cambiarán */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transición por defecto */
+}
+
+/* Clases de efecto específicas (definiendo el estado inicial para la animación) */
+.slide-up {
+    transform: translateY(30px);
+}
+
+.scale-in {
+    transform: scale(0.9);
+}
+
+/* Cuando el elemento es visible, restablecer el estado y mostrar */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
+/* Retrasos para un efecto de animación escalonado */
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
+
+.delay-3 {
+    transition-delay: 0.6s;
+}
+
+.delay-4 {
+    transition-delay: 0.8s;
+}
+
+
+/* --- Hero Section (Banner Principal) --- */
+
+.hero-section {
+    position: relative;
+    height: 85vh; /* Un poco más alto para mayor impacto */
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    overflow: hidden;
+    border-radius: 25px; /* Más redondeado */
+    margin: 2rem auto 4rem auto; /* Centrado y con más margen */
+    max-width: 95%; /* Para que no ocupe todo el ancho en pantallas muy grandes */
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    border-radius: 25px;
+    animation: zoomInEffect 10s ease-in-out infinite alternate; /* Animación más lenta */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)); /* Más oscuro */
+    z-index: 2;
+    border-radius: 25px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1000px; /* Más ancho para el texto */
+    padding: 0 2rem;
+    /* La animación inicial del hero-content se manejará desde el HTML si es necesario */
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5.5rem; /* Título más grande */
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8); /* Sombra más pronunciada */
+    opacity: 0; /* Oculto inicialmente */
+    animation: slideUp 1s ease-out forwards; /* Animación de entrada para el título */
+}
+
+.hero-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.85rem; /* Subtítulo más grande */
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    color: var(--text-light);
+    opacity: 0; /* Oculto inicialmente */
+    animation: slideUp 1s ease-out 0.4s forwards; /* Animación con retraso */
+}
+
+.hero-cta-button {
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    padding: 1.2rem 3rem; /* Botón más grande */
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.35rem; /* Texto de botón más grande */
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+    opacity: 0; /* Oculto inicialmente */
+    animation: scaleIn 1s ease-out 0.8s forwards; /* Animación con retraso */
+}
+
+.hero-cta-button:hover {
+    transform: translateY(-7px); /* Efecto de levantamiento más pronunciado */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); /* Sombra más intensa al hover */
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* --- Estilos para las Secciones Generales --- */
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; /* Más audaz */
+    font-size: 3.5rem; /* Tamaño de títulos de sección */
+    color: var(--heading-color);
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.08); /* Sombra muy sutil */
+}
+
+.section-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.15rem; /* Un poco más grande */
+    color: var(--text-dark);
+    line-height: 1.8; /* Mejor legibilidad */
+    max-width: 900px;
+    margin: 0 auto; /* Centrar descripción */
+}
+
+/* --- Sección de Servicios Destacados --- */
+.services-highlight-section {
+    padding: 5rem 0; /* Más padding */
+    background-color: var(--bg-light);
+    border-radius: 20px; /* Bordes más redondeados */
+    margin: 5rem auto; /* Más margen para separación y centrado */
+    max-width: 95%; /* Para que no ocupe todo el ancho en pantallas muy grandes */
+}
+
+.service-card {
+    background-color: var(--bg-light-card);
+    border-radius: 20px; /* Más redondeado */
+    padding: 2.5rem; /* Más padding */
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-15px); /* Efecto flotante más pronunciado */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* Sombra más intensa al pasar el mouse */
+}
+
+.service-card .service-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--primary-color-light); /* Fondo suave para el círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.service-card:hover .service-icon-wrapper {
+    background-color: var(--primary-color); /* Cambia el fondo del círculo al hover */
+}
+
+
+.service-card .service-icon {
+    font-size: 4rem; /* Íconos más grandes */
+    color: var(--primary-color); /* Color de ícono vibrante */
+    transition: color 0.3s ease-in-out;
+}
+
+.service-card:hover .service-icon {
+    color: var(--text-light); /* Cambia el color del ícono al hover */
+}
+
+
+.service-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem; /* Título de tarjeta más grande */
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 1.2rem;
+}
+
+.service-card p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.05rem; /* Texto de tarjeta ligeramente más grande */
+    color: var(--text-dark);
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: 2rem; /* Más espacio antes del botón */
+}
+
+.service-card-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    padding: 0.7rem 2rem; /* Más padding */
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    text-decoration: none;
+}
+
+.service-card-link:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    transform: translateY(-3px); /* Pequeño levantamiento al hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Botón "Ver Todos los Servicios" */
+.custom-button-style {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-light);
+    font-weight: 700;
+    padding: 1rem 2.5rem; /* Botón más grande */
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button-style:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-5px); /* Efecto de levantamiento más pronunciado */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+---
+
+/* --- Sección de Testimonios --- */
+.testimonials-section {
+    padding: 5rem 0; /* Más padding */
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); /* Gradiente de fondo */
+    color: var(--text-light);
+    text-align: center;
+    border-radius: 20px; /* Bordes más redondeados */
+    margin: 5rem auto; /* Más margen para separación y centrado */
+    max-width: 95%; /* Para que no ocupe todo el ancho en pantallas muy grandes */
+}
+
+.testimonials-section .section-title {
+    color: var(--text-light); /* Sobreescribe el color para el título de esta sección */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.testimonial-card {
+    background-color: rgba(255, 255, 255, 0.15); /* Ligera transparencia sobre el fondo oscuro */
+    border-radius: 20px; /* Más redondeado */
+    padding: 3rem; /* Más padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Sombra más fuerte */
+    font-style: italic;
+    line-height: 1.9; /* Mejor legibilidad */
+    position: relative; /* Para posicionar el ícono de comillas */
+}
+
+.quote-icon {
+    font-size: 3rem; /* Ícono de comillas más grande */
+    color: var(--tertiary-color); /* Color blanco o un color que contraste bien */
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.testimonial-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.35rem; /* Texto más grande */
+    margin-bottom: 2rem;
+}
+
+.testimonial-author {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Más audaz */
+    font-size: 1.2rem; /* Autor más grande */
+    color: var(--tertiary-color); /* Color blanco o un color que contraste bien */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+---
+
+/* --- Sección de Llamada a la Acción (CTA) Final --- */
+.final-cta-section {
+    background: linear-gradient(to right, var(--accent-color), var(--secondary-color)); /* Gradiente de fondo */
+    color: var(--text-light);
+    padding: 6rem 1rem; /* Más padding */
+    text-align: center;
+    border-radius: 20px; /* Bordes más redondeados */
+    margin: 5rem auto 3rem auto; /* Más margen y centrado */
+    max-width: 95%; /* Para que no ocupe todo el ancho en pantallas muy grandes */
+}
+
+.final-cta-section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem; /* Título más grande */
+    font-weight: 900;
+    margin-bottom: 2rem;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+}
+
+.final-cta-section-lead {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem; /* Texto más grande */
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+.final-cta-button {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--tertiary-color); /* Fondo del botón blanco */
+    color: var(--primary-color); /* Texto del botón color primario */
+    border: none;
+    font-weight: 700;
+    padding: 1.2rem 3.5rem; /* Botón más grande */
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.final-cta-button:hover {
+    transform: translateY(-7px); /* Efecto de levantamiento más pronunciado */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    background-color: var(--text-light);
+    color: var(--accent-color); /* Cambia el color del texto al pasar el mouse */
+}
+
+
+/* --- Media Queries para Responsividad (Ajustadas y mejoradas) --- */
+
+@media (max-width: 1200px) { /* Laptops y tablets grandes */
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.6rem;
+    }
+    .section-title {
+        font-size: 3rem;
+    }
+    .final-cta-section-title {
+        font-size: 3.5rem;
+    }
+    .final-cta-section-lead {
+        font-size: 1.4rem;
+    }
+    .service-card h3 {
+        font-size: 1.8rem;
+    }
+    .testimonial-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 991px) { /* Tablets */
+    .hero-section {
+        height: 70vh;
+        min-height: 450px;
+    }
+    .hero-title {
+        font-size: 3.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+    .hero-cta-button {
+        padding: 1rem 2.2rem;
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 2.8rem;
+    }
+    .final-cta-section-title {
+        font-size: 3rem;
+    }
+    .final-cta-section-lead {
+        font-size: 1.2rem;
+    }
+    .service-card {
+        padding: 2rem;
+    }
+    .service-card .service-icon-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+    .service-card .service-icon {
+        font-size: 3.5rem;
+    }
+    .testimonial-card {
+        padding: 2.5rem;
+    }
+    .testimonial-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767px) { /* Móviles grandes */
+    .hero-section {
+        height: 60vh;
+        min-height: 380px;
+        margin-top: 1rem;
+        border-radius: 15px;
+    }
+    .hero-image, .hero-overlay {
+        border-radius: 15px;
+    }
+    .hero-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+    }
+    .hero-cta-button {
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .section-description {
+        font-size: 1rem;
+    }
+    .services-highlight-section, .testimonials-section, .final-cta-section {
+        padding: 3rem 0;
+        margin: 3rem auto;
+        border-radius: 15px;
+    }
+    .service-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    .service-card .service-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+    .service-card .service-icon {
+        font-size: 3rem;
+    }
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+    .service-card p {
+        font-size: 0.95rem;
+    }
+    .custom-button-style {
+        padding: 0.7rem 1.8rem;
+        font-size: 1rem;
+    }
+    .testimonial-card {
+        padding: 2rem;
+        border-radius: 15px;
+    }
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    .testimonial-author {
+        font-size: 1.05rem;
+    }
+    .final-cta-section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .final-cta-section-lead {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    .final-cta-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 575px) { /* Móviles pequeños */
+    .hero-section {
+        height: 55vh;
+        min-height: 320px;
+        margin-top: 0.5rem;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    .hero-cta-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .section-description {
+        font-size: 0.9rem;
+    }
+    .services-highlight-section, .testimonials-section, .final-cta-section {
+        padding: 2.5rem 0;
+        margin: 2.5rem auto;
+    }
+    .service-card {
+        padding: 1rem;
+    }
+    .service-card .service-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    .service-card .service-icon {
+        font-size: 2.5rem;
+    }
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+    .service-card p {
+        font-size: 0.85rem;
+    }
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    .testimonial-text {
+        font-size: 0.9rem;
+    }
+    .testimonial-author {
+        font-size: 1rem;
+    }
+    .final-cta-section-title {
+        font-size: 2rem;
+    }
+    .final-cta-section-lead {
+        font-size: 1rem;
+    }
+    .final-cta-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+}
